@@ -24,3 +24,44 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Floating background blobs */
+.blob {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #a855f7, transparent);
+  filter: blur(100px);
+  animation: float 12s infinite ease-in-out;
+}
+
+.blob2 {
+  background: radial-gradient(circle, #06b6d4, transparent);
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-50px) translateX(30px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+/* glowing border */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #a855f7, #06b6d4, #a855f7);
+  z-index: -1;
+  filter: blur(10px);
+  animation: glowMove 6s linear infinite;
+}
+
+@keyframes glowMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
